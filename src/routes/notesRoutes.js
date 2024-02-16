@@ -1,15 +1,24 @@
-//import  express
-const express=require('express');
-//const { notes, hotels } = require('../utils');
-const { getNotesAndHotels, getOneNotesAndHotels } = require('../controllers/notesController');
-//define router
-const router=express.Router()
+// import express
+const express = require('express');
+const {
+  getNotes,
+  addNote,
+  delNote,
+  getSingleNote,
+} = require("../controllers/notesController");
 
-//get all notes and hotels
-router.get("/",getNotesAndHotels)
-//get one notes and hotels
-router.get("/:id",getOneNotesAndHotels)
-//Create notes and hotels
-//router.post("/",addNotesAndHotels)
-//export the router
-module.exports = router
+// define router // creating an instance of Router 
+const router = express.Router()
+
+// get notes route
+router.get("/" , getNotes )
+
+// get one note
+router.get("/:noteId", getSingleNote)
+
+// add note
+router.post("/", addNote)
+// delete one note
+router.delete("/:noteId",delNote)
+// export the router
+module.exports = router 
