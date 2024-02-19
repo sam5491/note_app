@@ -1,9 +1,11 @@
-const { notes } = require("../utils");
+const { Note } = require("../database/models");
 
+let notes=[]
 // Fetching all notes
 const getNotes = (req, res) => {
+  const data=Note.findAll()
   return res.status(200).json({
-    data: notes,
+    data: data,
   
   });
 };
@@ -45,18 +47,18 @@ const delNote = (req, res) => {
   // get id from the params
   const noteId   =parseInt(req.params.noteId) //<=> const { noteId } = parseInt(req.params)
 //console.log( noteId+"noteId"+ typeof(noteId))
-const singleNote =  notes.find((note) => {
+const Notedel =  notes.find((note) => {
   return note.id === noteId
 })
-
-if (!singleNote) { // if it is undefined
-return res.status(404).json({
-  message: `Note with id: ${noteId} was not found`
-})
-}
-notes.splice(noteId)
-res.status(201).json({
-  message: `ID: ${noteId} was deleted`
-})
+//crsonsole.log(delNote)
+// if (!Notedel) { // if it is undefined
+// return res.status(404).json({
+//   message: `Note with id: ${noteId} was not found`
+// })
+// }
+// notes.filter(noteId)
+// res.status(201).json({
+// message: `ID: ${noteId} was deleted`
+// })
 }
 module.exports = { getNotes, getSingleNote, addNote,delNote };

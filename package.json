@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "migrate":"npx sequelize-cli db:migrate",
+    "rollback":"npx sequelize-cli db:migrate:undo"
   },
   "author": "Sam Ndagije",
   "license": "MIT",
